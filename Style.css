@@ -1,23 +1,29 @@
 ﻿html,body{height:100%;}
 *{margin:0;padding:0;font-family:robotoregular;font-size:1vw;}
 
-#license
+
+/*
+    general
+*/
+body
 {
-    font-size:0.5em;
+    background:green;
 }
+
+
+/*
+    kaarten
+*/
 #kaartenVlak
 {
     height:20vw;
 }
-p
-{
-    margin: 50px;
-}
+
 .kaart
 {
     position:absolute;
     width:20vw;
-    top:8vw;
+    top:6vw;
     transform:translate(-50%,-50%);
 }
 #k1
@@ -29,8 +35,27 @@ p
     left:14vw;
 }
 
+
+/*
+    license
+*/
+#cardsSvgLicense
+{
+    margin: 50px;
+}
+#cardsSvgLicense p
+{
+    font-size: 0.5em;
+}
+#cardsSvgLicense h1
+{
+    font-size: 0.6em;
+    font-style:normal;
+}
+
+
 /*
     #k + 1 = left: +8vw;
-#id
-.class
+    #id
+    .class
 */
