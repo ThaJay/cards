@@ -1,11 +1,36 @@
 ﻿html,body{height:100%;}
-*{margin:0;padding:0;font-family:robotoregular;font-size:10vh;}
+*{margin:0;padding:0;font-family:robotoregular;font-size:1vw;}
 
-.card
+#license
 {
-    width:10vw;
-    height:16vw;
-    border:0.5vw solid black;
-    border-radius:2vw;
-    margin:2vw;
+    font-size:0.5em;
 }
+#kaartenVlak
+{
+    height:20vw;
+}
+p
+{
+    margin: 50px;
+}
+.kaart
+{
+    position:absolute;
+    width:20vw;
+    top:8vw;
+    transform:translate(-50%,-50%);
+}
+#k1
+{
+    left:6vw;
+}
+#k2
+{
+    left:14vw;
+}
+
+/*
+    #k + 1 = left: +8vw;
+#id
+.class
+*/
