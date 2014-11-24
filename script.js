@@ -75,7 +75,7 @@
         kaartenVlak = document.getElementById('kaartenVlak'),
         achter = back.bb,
         card1 = 52,
-        usedCards = [],
+        usedCards = [52],
 
         randomCardPicker = function ()
         {
@@ -85,18 +85,19 @@
         random52 = function ()
         {
             randomCardPicker();
+            if (usedCards[0] == 52 && usedCards.length > 1)
+            {
+                usedCards.shift()
+            }
             for (var i = 0 ; i < usedCards.length ; i++)
             {
                 if (usedCards[i] == card1)
                 {
                     randomCardPicker();
                 }
-                else
-                {
-                    usedCards.push(card1);
-                    return card1;
-                }
             }
+            usedCards.push(card1);
+            return card1;
         };
 
     kaartenVlak.innerHTML += '<img id="k1" class="kaart" src=' + cards[random52()] + ' />';
@@ -107,4 +108,6 @@
     kaartenVlak.innerHTML += '<img id="k6" class="kaart" src=' + cards[random52()] + ' />';
     kaartenVlak.innerHTML += '<img id="k7" class="kaart" src=' + cards[random52()] + ' />';
 
+
+    "hallo"
 };
