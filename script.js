@@ -1,117 +1,110 @@
-﻿/*window.onload = function ()
-{*/
-    var clubs =
-        [
-            //index 0
-            { II: "cards/Clubs/2C.svg" },
-            //index 1
-            { III: "cards/Clubs/3C.svg" },
-            //index 2
-            { IV: "cards/Clubs/4C.svg" },
-            //index 3
-            { V: "cards/Clubs/5C.svg" },
-            //index 4
-            { VI: "cards/Clubs/6C.svg" },
-            //index 5
-            { VII: "cards/Clubs/7C.svg" },
-            //index 6
-            { VIII: "cards/Clubs/8C.svg" },
-            //index 7
-            { IX: "cards/Clubs/9C.svg" },
-            //index 8
-            { X: "cards/Clubs/10C.svg" },
-            //index 9
-            { J: "cards/Clubs/JC.svg" },
-            //index 10
-            { Q: "cards/Clubs/QC.svg" },
-            //index 11
-            { K: "cards/Clubs/KC.svg" },
-            //index 12
-            { A: "cards/Clubs/AC.svg" }
-        ],
+﻿window.onload = function () {
 
-        diamonds =
+    var cards =
         [
-            { 2: "cards/Diamonds/2D.svg" },
-            { 3: "cards/Diamonds/3D.svg" },
-            { 4: "cards/Diamonds/4D.svg" },
-            { 5: "cards/Diamonds/5D.svg" },
-            { 6: "cards/Diamonds/6D.svg" },
-            { 7: "cards/Diamonds/7D.svg" },
-            { 8: "cards/Diamonds/8D.svg" },
-            { 9: "cards/Diamonds/9D.svg" },
-            { 10: "cards/Diamonds/10D.svg" },
-            { J: "cards/Diamonds/JD.svg" },
-            { Q: "cards/Diamonds/QD.svg" },
-            { K: "cards/Diamonds/KD.svg" },
-            { A: "cards/Diamonds/AD.svg" },
-        ],
+            "cards/Clubs/2C.svg",
+            "cards/Clubs/3C.svg",
+            "cards/Clubs/4C.svg",
+            "cards/Clubs/5C.svg",
+            "cards/Clubs/6C.svg",
+            "cards/Clubs/7C.svg",
+            "cards/Clubs/8C.svg",
+            "cards/Clubs/9C.svg",
+            "cards/Clubs/10C.svg",
+            "cards/Clubs/JC.svg",
+            "cards/Clubs/QC.svg",
+            "cards/Clubs/KC.svg",
+            "cards/Clubs/AC.svg",
 
-        hearts =
-        [
-            { 2: "cards/Hearts/2H.svg" },
-            { 3: "cards/Hearts/3H.svg" },
-            { 4: "cards/Hearts/4H.svg" },
-            { 5: "cards/Hearts/5H.svg" },
-            { 6: "cards/Hearts/6H.svg" },
-            { 7: "cards/Hearts/7H.svg" },
-            { 8: "cards/Hearts/8H.svg" },
-            { 9: "cards/Hearts/9H.svg" },
-            { 10: "cards/Hearts/10H.svg" },
-            { J: "cards/Hearts/JH.svg" },
-            { Q: "cards/Hearts/QH.svg" },
-            { K: "cards/Hearts/KH.svg" },
-            { A: "cards/Hearts/AH.svg" },
-        ],
+            "cards/Diamonds/2D.svg",
+            "cards/Diamonds/3D.svg",
+            "cards/Diamonds/4D.svg",
+            "cards/Diamonds/5D.svg",
+            "cards/Diamonds/6D.svg",
+            "cards/Diamonds/7D.svg",
+            "cards/Diamonds/8D.svg",
+            "cards/Diamonds/9D.svg",
+            "cards/Diamonds/10D.svg",
+            "cards/Diamonds/JD.svg",
+            "cards/Diamonds/QD.svg",
+            "cards/Diamonds/KD.svg",
+            "cards/Diamonds/AD.svg",
 
-        spades =
-        [
-            { 2: "cards/Spades/2S.svg" },
-            { 3: "cards/Spades/3S.svg" },
-            { 4: "cards/Spades/4S.svg" },
-            { 5: "cards/Spades/5S.svg" },
-            { 6: "cards/Spades/6S.svg" },
-            { 7: "cards/Spades/7S.svg" },
-            { 8: "cards/Spades/8S.svg" },
-            { 9: "cards/Spades/9S.svg" },
-            { 10: "cards/Spades/10S.svg" },
-            { J: "cards/Spades/JS.svg" },
-            { Q: "cards/Spades/QS.svg" },
-            { K: "cards/Spades/KS.svg" },
-            { A: "cards/Spades/AS.svg" },
-        ],
+            "cards/Hearts/2H.svg",
+            "cards/Hearts/3H.svg",
+            "cards/Hearts/4H.svg",
+            "cards/Hearts/5H.svg",
+            "cards/Hearts/6H.svg",
+            "cards/Hearts/7H.svg",
+            "cards/Hearts/8H.svg",
+            "cards/Hearts/9H.svg",
+            "cards/Hearts/10H.svg",
+            "cards/Hearts/JH.svg",
+            "cards/Hearts/QH.svg",
+            "cards/Hearts/KH.svg",
+            "cards/Hearts/AH.svg",
 
+            "cards/Spades/2S.svg",
+            "cards/Spades/3S.svg",
+            "cards/Spades/4S.svg",
+            "cards/Spades/5S.svg",
+            "cards/Spades/6S.svg",
+            "cards/Spades/7S.svg",
+            "cards/Spades/8S.svg",
+            "cards/Spades/9S.svg",
+            "cards/Spades/10S.svg",
+            "cards/Spades/JS.svg",
+            "cards/Spades/QS.svg",
+            "cards/Spades/KS.svg",
+            "cards/Spades/AS.svg",
+            "none"
+        ],
+        cardIndeces =
+        {
+            clubs: "0 - 12",
+            diamonds: "13 - 25",
+            hearts: "26 - 38",
+            spades: "39 - 51",
+        },
         back =
         {
             bb: "backs/Blue_Back.svg",
             rb: "backs/Red_Back.svg"
         },
-        deck =
-        [
-            clubs,
-            diamonds,
-            hearts,
-            spades
-        ],
 
+        kaartenVlak = document.getElementById('kaartenVlak'),
         achter = back.bb,
-        kaartenVlak = document.getElementById('kaartenVlak');
+        card1 = 52,
+        usedCards = [],
 
+        randomCardPicker = function ()
+        {
+            card1 = Math.round(Math.random() * 51);
+        },
 
-    kaartenVlak.innerHTML += '<img id="k1" class="kaart" src=' + kaart.sA + ' />';
-    kaartenVlak.innerHTML += '<img id="k2" class="kaart" src=' + kaart.sK + ' />';
+        random52 = function ()
+        {
+            randomCardPicker();
+            for (var i = 0 ; i < usedCards.length ; i++)
+            {
+                if (usedCards[i] == card1)
+                {
+                    randomCardPicker();
+                }
+                else
+                {
+                    usedCards.push(card1);
+                    return card1;
+                }
+            }
+        };
 
+    kaartenVlak.innerHTML += '<img id="k1" class="kaart" src=' + cards[random52()] + ' />';
+    kaartenVlak.innerHTML += '<img id="k2" class="kaart" src=' + cards[random52()] + ' />';
+    kaartenVlak.innerHTML += '<img id="k3" class="kaart" src=' + cards[random52()] + ' />';
+    kaartenVlak.innerHTML += '<img id="k4" class="kaart" src=' + cards[random52()] + ' />';
+    kaartenVlak.innerHTML += '<img id="k5" class="kaart" src=' + cards[random52()] + ' />';
+    kaartenVlak.innerHTML += '<img id="k6" class="kaart" src=' + cards[random52()] + ' />';
+    kaartenVlak.innerHTML += '<img id="k7" class="kaart" src=' + cards[random52()] + ' />';
 
-    //functional deck of cards/card shuffler
-
-    suit = Math.random
-
-
-/*
-        randomCardNumber = (Math.random() * 52),
-        randCard = Math.round(randomCardNumber)
-*/
-
-
-
-/*};*/
+};
