@@ -1,6 +1,7 @@
 ﻿window.onload = function () {
 
     var cards =
+        //define cards
         [
             "cards/Clubs/2C.svg",
             "cards/Clubs/3C.svg",
@@ -72,42 +73,58 @@
             rb: "backs/Red_Back.svg"
         },
 
+        //define vars
         kaartenVlak = document.getElementById('kaartenVlak'),
+        buttonNewCard = document.getElementsByTagName('button'),
         achter = back.bb,
         card1 = 52,
         usedCards = [52],
+        kNum = 1,
+        kVw = 6,
 
-        randomCardPicker = function ()
-        {
+        //define functions
+        randomCardPicker = function () {
             card1 = Math.round(Math.random() * 51);
         },
 
-        random52 = function ()
-        {
+        random52 = function () {
             randomCardPicker();
-            if (usedCards[0] == 52 && usedCards.length > 1)
-            {
+            if (usedCards[0] == 52 && usedCards.length > 1) {
                 usedCards.shift()
             }
-            for (var i = 0 ; i < usedCards.length ; i++)
-            {
-                if (usedCards[i] == card1)
-                {
+            if (usedCards.length > 51) {
+                if (confirm("shuffle deck?")) {
+                    usedCards = [52];
+                }
+            }
+            for (var i = 0 ; i < usedCards.length ; i++) {
+                if (usedCards[i] == card1) {
                     randomCardPicker();
                 }
             }
             usedCards.push(card1);
             return card1;
+        },
+        addCard = function ()
+        {
+            kNum += 1;
+            kVw += 8;
+            kaartenVlak.innerHTML += '<img id="k' + kNum + '" class="kaart" style = "left:' + kVw + 'vw" src=' + cards[random52()] + ' />';
         };
 
+    //call it all
     kaartenVlak.innerHTML += '<img id="k1" class="kaart" src=' + cards[random52()] + ' />';
+
+    buttonNewCard.onclick = function () { addCard() };
+
+
+    /*
     kaartenVlak.innerHTML += '<img id="k2" class="kaart" src=' + cards[random52()] + ' />';
     kaartenVlak.innerHTML += '<img id="k3" class="kaart" src=' + cards[random52()] + ' />';
     kaartenVlak.innerHTML += '<img id="k4" class="kaart" src=' + cards[random52()] + ' />';
     kaartenVlak.innerHTML += '<img id="k5" class="kaart" src=' + cards[random52()] + ' />';
     kaartenVlak.innerHTML += '<img id="k6" class="kaart" src=' + cards[random52()] + ' />';
     kaartenVlak.innerHTML += '<img id="k7" class="kaart" src=' + cards[random52()] + ' />';
+    */
 
-
-    "hallo"
 };
