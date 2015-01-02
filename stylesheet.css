@@ -10,8 +10,18 @@ body
 button
 {
     position: absolute;
-    top: 12vw;
-    left: 2vw;
+    width:    4vw;
+    height:   2vw;
+}
+#drawButton
+{
+    top:      12vw;
+    left:      2vw;
+}
+#resetButton
+{
+    top:      12vw;
+    left:      7vw;
 }
 /*
     kaarten
@@ -22,10 +32,23 @@ button
 }
 .kaart
 {
-    position: absolute;
-    width: 20vw;
-    top: 6vw;
+    position:  absolute;
+    width:     20vw;
+    top:        6vw;
     transform: translate(-50%,-50%);
+}
+#cardSelector
+{
+    position:         absolute;
+    width:            7.5vw;
+    height:           9.6vw;
+    top:              6vw;
+    left:             6vw;
+    transform:        translate(-50%,-50%);
+    border:           0.2vw solid blue;
+    border-radius:    0.5vw;
+    background-color: rgba(0,0,200,0.6);
+    visibility:       hidden;
 }
 /*
     license
@@ -40,10 +63,10 @@ button
 }
 #cardsSvgLicense h1
 {
-    font-size: 0.6em;
+    font-size:  0.6em;
     font-style: normal;
 }
-/*  #k + 1 = left: +8vw;
-    #id
-    .class
+/*
+#id
+.class
 */

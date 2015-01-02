@@ -1,6 +1,6 @@
 ﻿window.onload = function () {
 
-    //define cards
+    //define vars
     var cards =
         [
             "cards/Spades/2S.svg",
@@ -61,10 +61,25 @@
             "none"
         ],
 
+        //define vars
+        back = { blue: "backs/Blue_Back.svg", red: "backs/Red_Back.svg" },
+        kaartenVlak = document.getElementById('kaartenVlak'),
+        drawButton = document.getElementById('drawButton'),
+        resetButton = document.getElementById('resetButton'),
+        achter = back.bb,
+        card1 = 52,
+        usedCards = [52],
+        kNum = 0,
+        kVw = 6,
+        drawnState = 0,
+        k1 = {},
+        k2 = {},
+        k3 = {},
+        k4 = {},
+        k5 = {},
 
-        //Meet card, the Object!
-        card = function ()
-        {
+        //Meet Card, the Object constructor!
+        Card = function () {
             this.value = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A", "no value"];
             this.suit = ["S", "H", "D", "C", "no s"];
             this.name = this.value[chosenValue] + this.suit[chosenSuit];
@@ -77,30 +92,13 @@
             this.cardNumber = 52;
 
             this.numToSuitAndValue = function () {
-                if      (this.cardNumber <= 12) { this.chosenSuit = 0; this.chosenValue = this.cardNumber }
+                if (this.cardNumber <= 12) { this.chosenSuit = 0; this.chosenValue = this.cardNumber }
                 else if (this.cardNumber <= 25) { this.chosenSuit = 1; this.chosenValue = this.cardNumber - 12 }
                 else if (this.cardNumber <= 38) { this.chosenSuit = 2; this.chosenValue = this.cardNumber - 25 }
-                else                            { this.chosenSuit = 3; this.chosenValue = this.cardNumber - 38 };
+                else { this.chosenSuit = 3; this.chosenValue = this.cardNumber - 38 };
             };
 
-            this.back = { blue: "backs/Blue_Back.svg", red: "backs/Red_Back.svg" };
-            this.selectedBack = "blue"
-
-        };
-
-
-/*
-
-*/
-
-        //define vars
-        kaartenVlak = document.getElementById('kaartenVlak'),
-        buttonNewCard = document.getElementsByTagName('button'),
-        achter = back.bb,
-        card1 = 52,
-        usedCards = [52],
-        kNum = 1,
-        kVw = 6,
+        },
 
         //define functions
         randomCardPicker = function () {
@@ -125,18 +123,62 @@
             usedCards.push(card1);
             return card1;
         },
+
+        drawCards = function ()
+        {
+
+        },
         addCard = function ()
         {
             //new card();
             kNum += 1;
+            kaartenVlak.innerHTML += '<img id="k' + kNum + '" class="kaart" style = "left:' + kVw + 'vw" src="' + cards[random52()] + '" />';
             kVw += 8;
-            kaartenVlak.innerHTML += '<img id="k' + kNum + '" class="kaart" style = "left:' + kVw + 'vw" src=' + cards[random52()] + ' />';
         };
 
-    //call it all
-    kaartenVlak.innerHTML += '<img id="k1" class="kaart" src=' + cards[random52()] + ' />';
 
-    buttonNewCard[0].addEventListener("click", addCard);
+    //call it all
+
+
+    drawButton.addEventListener("click", function () {
+        if (drawnState == 0) {
+            for (i = 0; i < 5; i += 1) {
+                drawCards();
+                drawnState = 1;
+            };
+            a = hoi;
+        }
+    });
+
+    drawButton.addEventListener("click", function ()
+    {
+        if (drawnState == 0)
+        {
+            for (i = 0; i < 5; i += 1)
+            {
+                addCard();
+                drawnState = 1;
+            };
+            a = hoi;
+        }
+    });
+
+    resetButton.addEventListener("click", function () {
+        if (drawnState == 1)
+        {
+            while (kaartenVlak.lastChild)
+            {
+                kaartenVlak.removeChild(kaartenVlak.lastChild);
+            };
+            usedCards = [52];
+            kNum = 1,
+            kVw = 6,
+            drawnState = 0;
+        }
+    });
+};
+
+
 
 /*
 cardIndeces =
@@ -158,6 +200,7 @@ Straight          4
 Three of a kind   3
 Two Pair          2
 Jacks or better   1
+
 this.value = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A", "no value"];
 index          0    1    2    3    4    5    6    7    8     9   10   11   12   13
 
@@ -172,4 +215,3 @@ StraightFlush = (4x (lowest) =+1) + kaart(x).suit
 Royal Flush = (4x (lowest) =+1) + kaart(x).suit, lowest = 10
 
 */
-};
