@@ -115,7 +115,7 @@
     //call it all
     kaartenVlak.innerHTML += '<img id="k1" class="kaart" src=' + cards[random52()] + ' />';
 
-    buttonNewCard.onclick = function () { addCard() };
+    buttonNewCard[0].addEventListener("click", addCard);
 
 
     /*
